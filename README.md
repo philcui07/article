@@ -53,8 +53,23 @@ git push
 
 ## 部署方式
 
-仓库 `main` 分支根目录即站点根目录，GitHub Pages 从 **main / root** 发布。
-首次需要在仓库 Settings → Pages 里把 Source 设为 `main` 分支的 `/ (root)`，之后推送即自动生效。
+- **站点地址**：https://philcui07.github.io/article/
+- 仓库 `main` 分支根目录即站点根目录，GitHub Pages 从 **main / root** 发布（已启用）
+
+推送时二选一：
+
+```bash
+# 方式一：git 协议（需能连 github.com:443）—— 首选
+GITHUB_TOKEN=ghp_xxxx ./deploy.sh
+
+# 方式二：HTTPS API（只需能连 api.github.com）—— github.com 被墙时用它
+GITHUB_TOKEN=ghp_xxxx python3 deploy_api.py
+```
+
+`deploy_api.py` 会把整个工作区打包成一个干净的 commit。注意 GitHub 的
+Git Data API 不支持完全空的仓库，脚本会自动先建初始 commit。
+
+Token 只需 **`repo`** 权限（classic token 勾 `repo` 即可）。
 
 ## 文章页样式
 
