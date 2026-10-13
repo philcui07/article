@@ -14,8 +14,36 @@ article/
 ├── articles.js             # 文章清单配置 ← 加文章时改这里
 ├── posts/                  # 文章页面存放处
 │   └── what-makes-humans-stupid.html
+├── site.webmanifest        # PWA 清单（「添加到桌面」图标来源）
+├── favicon.ico             # 16/32/48 多尺寸
+├── favicon-16/32/96/192/512.png
+├── apple-touch-icon.png    # 180×180，iOS / 鸿蒙主屏图标
 └── README.md
 ```
+
+## 图标与「添加到桌面」
+
+每个页面的 `<head>` 都需要带下面这组声明（首页用相对路径，文章页用 `../` 前缀）：
+
+```html
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#fbfaf7">
+```
+
+要点：
+
+- **`site.webmanifest` 是鸿蒙 / 安卓「添加到桌面」取图标的主要来源**，缺了它浏览器多半会退化成默认图标或纯文字快捷方式。
+- 图标必须**不透明**（无 alpha 通道），否则桌面图标可能渲染成一片空白。
+- `apple-touch-icon.png` 必须 180×180，iOS 与鸿蒙都会优先读它。
+- 改完图标后，用户需要**删掉旧的桌面快捷方式再重新添加**，否则会读到缓存的旧图标。
+
+新文章页直接复制上面那段即可，把 `href` 全部加上 `../` 前缀。
 
 ## 如何新增一篇文章
 
