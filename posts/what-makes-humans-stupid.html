@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>是什么让人类愚蠢 | What Makes Humans Stupid — 中英对照全译</title>
+<style>
+  :root{
+    --bg:#fbfaf7;
+    --ink:#2b2b2b;
+    --ink-soft:#5a5a5a;
+    --en:#8d8779;
+    --rule:#e3dfd5;
+    --accent:#8c3b3b;
+    --accent-soft:#f5eee9;
+    --mark:#fdf6e3;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",Georgia,"Times New Roman",serif;
+    line-height:1.9;
+    font-size:17px;
+  }
+  .wrap{
+    max-width:780px;
+    margin:0 auto;
+    padding:56px 26px 100px;
+  }
+
+  /* ---------- 站点导航条 ---------- */
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:20px;
+    margin-bottom:26px;
+    border-bottom:1px solid var(--rule);
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    font-size:13px;
+  }
+  .topbar .back{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px dotted var(--accent);
+  }
+  .topbar .back:hover{color:#6d2d2d;}
+  .topbar .sitename{
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:#bfb9ab;
+    font-size:11px;
+  }
+
+  /* ---------- 头部 ---------- */
+  header{
+    text-align:center;
+    padding-bottom:34px;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:8px;
+  }
+  .kicker{
+    font-size:12px;
+    letter-spacing:.22em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:20px;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+  h1{
+    font-size:34px;
+    line-height:1.35;
+    margin:0 0 14px;
+    font-weight:700;
+    letter-spacing:.01em;
+  }
+  h1 .en-title{
+    display:block;
+    font-size:19px;
+    font-weight:400;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-top:10px;
+    letter-spacing:0;
+  }
+  .sub{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    margin:0 auto 22px;
+    max-width:600px;
+    line-height:1.8;
+  }
+  .sub em{
+    display:block;
+    font-size:13px;
+    color:var(--en);
+    margin-top:6px;
+    font-style:italic;
+  }
+  .byline{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    line-height:1.7;
+  }
+  .byline strong{color:var(--ink);font-weight:600;}
+  .byline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+
+  /* ---------- 译者说明 ---------- */
+  .note{
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    padding:16px 20px;
+    margin:34px 0 44px;
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.85;
+    border-radius:0 4px 4px 0;
+  }
+  .note b{color:var(--accent);}
+
+  /* ---------- 正文 ---------- */
+  .para{
+    margin-bottom:32px;
+    position:relative;
+  }
+  .cn{
+    font-size:17px;
+    line-height:1.95;
+    text-align:justify;
+    margin-bottom:10px;
+  }
+  .cn .term{
+    border-bottom:1px dotted var(--accent);
+    cursor:help;
+  }
+  .en{
+    font-size:13.5px;
+    line-height:1.75;
+    color:var(--en);
+    font-family:Georgia,"Times New Roman",serif;
+    font-style:italic;
+    padding-left:14px;
+    border-left:2px solid var(--rule);
+    text-align:justify;
+  }
+  .num{
+    position:absolute;
+    left:-30px;
+    top:6px;
+    font-size:11px;
+    color:#c9c3b5;
+    font-family:-apple-system,sans-serif;
+  }
+  strong{font-weight:700;}
+  .cn em{font-style:normal;background:var(--mark);padding:1px 2px;}
+
+  /* ---------- 小标题（文中分节） ---------- */
+  h2{
+    font-size:20px;
+    margin:52px 0 22px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--rule);
+    font-weight:700;
+  }
+  h2 span{
+    display:block;
+    font-size:12.5px;
+    color:var(--en);
+    font-weight:400;
+    font-style:italic;
+    margin-top:4px;
+  }
+
+  /* ---------- 译注表 ---------- */
+  .gloss{
+    margin-top:60px;
+    padding-top:34px;
+    border-top:2px solid var(--rule);
+  }
+  .gloss h2{border:none;margin:0 0 18px;font-size:19px;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+  th,td{
+    border:1px solid var(--rule);
+    padding:9px 12px;
+    text-align:left;
+    vertical-align:top;
+    line-height:1.65;
+  }
+  th{
+    background:#f3f0e9;
+    font-weight:600;
+    font-size:13px;
+    width:26%;
+  }
+  td.why{color:var(--ink-soft);}
+
+  footer{
+    margin-top:64px;
+    padding-top:22px;
+    border-top:1px solid var(--rule);
+    font-size:12.5px;
+    color:var(--en);
+    text-align:center;
+    line-height:1.8;
+    font-family:-apple-system,sans-serif;
+  }
+
+  @media (max-width:680px){
+    .wrap{padding:36px 18px 70px;}
+    h1{font-size:26px;}
+    body{font-size:16px;}
+    .cn{font-size:16px;}
+    .num{display:none;}
+    .para{padding-left:0;}
+  }
+  @media print{
+    body{background:#fff;}
+    .en{color:#777;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="topbar">
+  <a class="back" href="../index.html">&larr; 返回目录</a>
+  <span class="sitename">Article</span>
+</nav>
+
+<header>
+  <div class="kicker">Nautilus · 中英对照全译</div>
+  <h1>是什么让人类愚蠢
+    <span class="en-title">What Makes Humans Stupid</span>
+  </h1>
+  <p class="sub">把事情错得惊天动地，是需要智力的。一篇关于我们如何走向覆灭的随笔。
+    <em>It takes intelligence to get things spectacularly wrong. An essay on our undoing.</em>
+  </p>
+  <p class="byline">
+    <strong>David C. Krakauer</strong> · 大卫·C·克拉考尔<br>
+    圣塔菲研究所（Santa Fe Institute）所长、William H. Miller 复杂系统讲席教授<br>
+    原文刊于 Nautilus，2026 年 7 月 8 日 ·
+    <a href="https://nautil.us/what-makes-humans-stupid-1282459" target="_blank">nautil.us/what-makes-humans-stupid-1282459</a>
+  </p>
+</header>
+
+<div class="note">
+  <b>译者说明：</b>本文为全文首译，依 Nautilus 英文原文逐段对译，未作删节。排版采用「中文正文 + 英文原文对照」，便于核验译文。人名、书名、术语统一于文末<a href="#gloss" style="color:var(--accent);">译注表</a>。文中浅黄底色为中文语境下补充的 explanatory 成分，不影响原意。
+</div>
+
+<h2>一、愚蠢是一种高级行为 <span>Stupidity Is a Sophisticated Behavior</span></h2>
+
+<div class="para"><span class="num">1</span>
+  <div class="cn">我从未听人说过一块石头愚蠢。河流、飓风，甚至恒温器，也同样如此。尽管"愚蠢"这个词声名狼藉，它却似乎是一种相当高级的行为。</div>
+  <div class="en">I have never heard a rock described as stupid. And the same would be true of a river, a hurricane, and even a thermostat. Stupidity seems to be a sophisticated form of behavior despite its ignominious associations.</div>
+</div>
+
+<div class="para"><span class="num">2</span>
+  <div class="cn">人类能把自主探测器送上火星，能在几小时内完成基因组测序，能设计纳米级的电路。然而与此同时，阴谋论、反科学的政治运动、制度化的仇恨却在大规模蔓延——其规模之大，足以让中世纪炼金术士那点可怜的成功记录都相形见绌。</div>
+  <div class="en">Human beings can land autonomous rovers on Mars, sequence a genome in hours, and engineer nanometer circuits. And yet conspiracy theories, anti-scientific political movements, and institutional hatred proliferate on a scale that might embarrass the meager success record of a medieval alchemist.</div>
+</div>
+
+<div class="para"><span class="num">3</span>
+  <div class="cn">我们或许可以说，愚蠢意味着先要有"把事情做对"的能力，然后才能把事情错得惊天动地。愚蠢不是智力的反面，而是智力的<span class="term" title="evil twin">邪恶双胞胎</span>——它是工于心计的该隐，而智力是深思明辨的亚伯。或许出人意料的是，一个系统所能达到的愚蠢程度，与它所拥有的智力成正比——智力越高，愚蠢的功业就越壮观。说细菌愚蠢已属勉强；我们知道猫和狗只能完成小规模的愚蠢。但人类拥有语言、抽象能力、技术、制度和意识形态，因此能在真正的文明尺度上犯蠢。这不是玩笑，它近乎一条自然法则。而这条法则，很可能正是我们的覆灭之源。</div>
+  <div class="en">One might say that stupidity implies a capacity for getting things right before it can get them spectacularly wrong. Stupidity is not the opposite of intelligence but its evil twin, the dissimulating Cain to a cerebral Abel. And perhaps surprisingly, the degree of stupidity available to any system scales directly with the intelligence that system possesses—more intelligence begets greater feats of stupidity. It would be a stretch to call a bacterium stupid, and we know that cats and dogs achieve modest feats of it. But human beings, equipped with language, abstraction, technology, institutions, and ideology, can be stupid on a truly civilizational scale. This is not a joke; it is close to a law of nature. A law that might very well be our undoing.</div>
+</div>
+
+<div class="para"><span class="num">4</span>
+  <div class="cn">我们有成千上万个研究智力的项目，而其中并非所有项目本身都是明智的——智商研究、人工智能、动物认知、集体问题解决，皆在此列。它们设立在声名显赫的院系，发表在久负盛名的期刊上，致力于理解心智如何把难题变简单。如今我们每走一步，都会撞上另一篇关于智力与 AI 的文章。各个领域的学者，即便对智力研究及其历史一无所知，也纷纷自封为自然智力与人工智能领域的"思想领袖"。</div>
+  <div class="en">We have thousands of research programs on intelligence, and not all of them are intelligent, including studies of IQ, AI, animal cognition, and collective problem-solving. These take place in celebrated departments and are published in prestigious journals devoted to understanding how minds make hard problems easy. These days we cannot take a step without crashing into another article on intelligence and AI. Researchers from all fields without any knowledge of intelligence research and its history have become self-declared "thought leaders" in natural and artificial intelligence.</div>
+</div>
+
+<div class="para"><span class="num">5</span>
+  <div class="cn">然而愚蠢几乎得不到任何关注。它被当作一种纯粹的缺失——仿佛把智力减掉，剩下的就是愚蠢。人们把它比作关掉思虑之灯后所经历的那种心理黑暗。但这是个错误的看法。黑暗不会像愚蠢那样主动作恶。愚蠢是把一个简单的问题，靠着巨大的努力和被误导的巧思，变得困难。这份"努力"正是理解愚蠢的关键——你需要一套精密的机械装置，才能真正地、后果严重地犯蠢。</div>
+  <div class="en">Yet stupidity gets almost no attention at all. It is treated as a mere absence, as if once we subtract intelligence what remains is stupidity. It is likened to a form of psychological darkness experienced after you have switched off the lights of deliberation. But this is a mistaken belief. Darkness does not do anything pernicious in the way that stupidity does. Stupidity takes an easy problem and, with great effort and misdirected ingenuity, makes it hard. That effort is the key to grasping stupidity, in that you need sophisticated machinery to be genuinely, consequentially stupid.</div>
+</div>
+
+<h2>二、智力把问题变简单，愚蠢把问题变难 <span>Making Problem X Easier vs. Harder</span></h2>
+
+<div class="para"><span class="num">6</span>
+  <div class="cn">从科学的角度，我倾向于这样理解。如果说智力意味着通过部署工具、运用数学、采取降低成本的策略，把难度为 <em>X</em> 的问题变得更简单；那么愚蠢就意味着把难度为 <em>X</em> 的问题变得更难。而与直觉相反的是，把简单问题变难最可靠的办法，是搬来一套令人印象深刻的装置：复杂的理论、繁复的信念、精密的算法——听起来极具说服力，实际表现却比什么都不做更糟。一个不知道答案的人，只是无知。一个为错误答案构建出精巧百页论证的人，才是愚蠢。正如历来伟大的作家、艺术家和哲学家所理解的那样，这样的大工程需要相当高级的智力。</div>
+  <div class="en">Here is how I like to think about this from a scientific perspective. If intelligence means making a problem of difficulty X easier, by deploying tools, using mathematics, and adopting strategies that reduce its cost, then stupidity means making a problem of difficulty X harder. And contrary to expectations, the most reliable way to make an easy problem hard is to bring to bear an impressive apparatus of complicated theories, elaborate beliefs, and sophisticated algorithms that sound tremendously convincing but perform worse than doing nothing. A person who does not know the answer to a question is merely ignorant. A person who constructs an ingenious hundred-page argument for the wrong answer is stupid. As great writers, artists, and philosophers throughout time have understood, such constructions require intelligence of a high order.</div>
+</div>
+
+<div class="para"><span class="num">7</span>
+  <div class="cn">不妨考虑这样一个类比。当陨石撞上地球时，它谈不上做错了什么。它只是在遵守经典力学，如此而已。但当一只鸟撞上玻璃窗时，发生的事情就不一样了——那是我们有充分理由称之为"错误"的东西。</div>
+  <div class="en">Consider this analogy. When a meteor collides with the Earth, there is no sense in which it is doing anything wrong. It is obeying classical mechanics, and that is all there is to say about it. But when a bird flies into a glass window, something different has happened, something we can with justification call an error.</div>
+</div>
+
+<div class="para"><span class="num">8</span>
+  <div class="cn">在所有物理系统中，唯独生命具备"犯错"的能力。愚蠢是失败中非常特殊的一类，并非所有错误都够格。人会因为无知而犯错（数据不足），会因为噪声而犯错（信号失真），也会因为把某条规则诚实地误用到新情境、变化了的环境而犯错。这些都是我们生命中的不幸，应当被谅解。愚蠢始于错误被详细展开、被辩护、被打磨、被制度化，并被当作进一步行动的基础。愚蠢让一切逐步变得更糟。而恰恰是这种对错误信念与错误行为的精加工，悖论般地，需要以智力先于它存在为前提。</div>
+  <div class="en">Life, uniquely among physical systems, has the capacity to be wrong. Stupidity is a very special species of failure and not all errors qualify. People err from ignorance (insufficient data), from noise (a signal is distorted), or from the honest misapplication of a rule to a novel situation and changing context. These are the misfortunes of our lives about which we should be forgiving. Stupidity begins where error is elaborated, defended, refined, institutionalized, and made the foundation for further action. Stupidity makes everything progressively worse. And it is this elaboration of erroneous belief and behavior that demands, paradoxically, the prior existence of intelligence.</div>
+</div>
+
+<h2>三、把好理论用错地方 <span>A Good Theory Applied to the Wrong Problem</span></h2>
+
+<div class="para"><span class="num">9</span>
+  <div class="cn">最令人叹为观止的一些愚蠢壮举，在于把一套完全正确的理论用到了错误的问题上。有人会说，量子力学是物理学最"聪明"的发明之一——它提供了一个精度极高的框架来描述亚原子粒子的行为，尽管它有着真正反直觉的要求。</div>
+  <div class="en">Some of the most impressive feats of stupidity consist in applying a perfectly good theory to the wrong problem. Some would argue that quantum mechanics is one of the most "intelligent" inventions of physics, one that provides a framework of extraordinary precision for describing the behavior of subatomic particles, despite its truly counter-intuitive requirements.</div>
+</div>
+
+<div class="para"><span class="num">10</span>
+  <div class="cn">但有一小群思想家，形成了一个<span class="term" title="cottage industry">小作坊式的产业</span>，试图把量子力学用于人类意识、决策和心理学，以解释人为什么会犹豫不决，又为什么会最终拿定主意。数学没有问题，物理学也是可靠的，但这种应用很古怪。本来是对光子和电子的优雅而简约的描述，一旦引进心理学，就变成了一种繁复到荒谬的说法，只为说明"人有时会改变主意"。一个小说家用一段话就能讲清楚的现象，被埋进了一套为完全不同尺度的现实所设计的形式体系之下。这套理论本身并没有变笨，只是它被要求去解决一个它从未被设计来解决的问题；而在这个过程中，它让那个问题更难理解，而不是更容易。这违背了科学的目的——正如物理学家、哲学家恩斯特·马赫所描述的，科学的目的在于"以尽可能最少的思维耗费，尽可能完整地呈现事实"。</div>
+  <div class="en">But there is a small cottage industry of thinkers who have tried to apply quantum mechanics to human consciousness, decision-making, and psychology to explain why people are indecisive and why they eventually make up their minds. There is nothing wrong with the mathematics and the physics is sound. But the application is peculiar. What was an elegant and parsimonious description of photons and electrons becomes, when imported into psychology, an absurdly over-complicated way of saying that people sometimes change their minds. A phenomenon that a novelist could illuminate in a paragraph has been buried under a formalism designed for a completely different scale of reality. The theory did not become less intelligent, it was asked to solve a problem it was never designed for, and in the process, it made that problem harder to understand, not easier. This flies in the face of the purpose of science, which is, as the physicist and philosopher Ernst Mach described it, "the completest possible presentment of facts with the least possible expenditure of thought."</div>
+</div>
+
+<div class="para"><span class="num">11</span>
+  <div class="cn">早期控制论运动提供了另一个类似的警世故事。诺伯特·维纳和他在麻省理工学院的同事们，发展出一套强大的框架，用以理解机器与有机体中的反馈、控制和通信。其数学是原创的，工程应用令人赞叹，而控制论这项事业甚至为复杂性科学的发展奠定了基础。</div>
+  <div class="en">The early cybernetics movement offers a similar cautionary tale. Norbert Wiener and his colleagues at MIT developed a powerful framework for understanding feedback, control, and communication in machines and organisms. The mathematics was original, the engineering applications impressive, and the cybernetic enterprise even provided the groundwork for the development of complexity science.</div>
+</div>
+
+<div class="para"><span class="num">12</span>
+  <div class="cn">随后，管理咨询顾问斯塔福德·比尔等人试图把控制论的控制理论用于管理整个国民经济——最著名的是在萨尔瓦多·阿连德治下的智利，那里的"赛博协同工程"（Project Cybersyn）试图通过一张电传打字机网络来运转智利经济。其思路是把经济建模为一个有输入输出的动力系统，并用实时反馈来优化生产与分配。</div>
+  <div class="en">Then the management consultant Stafford Beer and others tried to apply cybernetic control theory to the management of entire national economies, most famously in Salvador Allende's Chile, where Project Cybersyn attempted to run the Chilean economy through a network of telex machines. The idea was to model the economy as a dynamical system with inputs and outputs, and to use real-time feedback to optimize production and distribution.</div>
+</div>
+
+<div class="para"><span class="num">13</span>
+  <div class="cn">不幸的是，经济并不是一台<span class="term" title="servomechanism">伺服机构</span>。国民经济中的反馈回路牵涉数百万个适应性主体，他们拥有私人信息、相互冲突的目标，并且倾向于不断演化自己的偏好。把控制论方法用于复杂系统的那种诱惑，被我在圣塔菲研究所的同事、作家弗朗西斯·斯帕福德在其小说《红色富足》中描写得淋漓尽致："世界正从黑暗中抬升起来，开始发光，而数学就是他所能提供的帮助。这是他的贡献。这是他按自己的能力所能给予的东西。他有幸生活在地球上唯一一个人类已经夺取了按理性塑造事件之权力的国家。"</div>
+  <div class="en">Unfortunately, an economy is not a servomechanism. The feedback loops in a national economy involve millions of adaptive agents with private information, conflicting goals, and a tendency to evolve their preferences. The seduction of applying cybernetic methods to complex systems is described beautifully by my Santa Fe Institute colleague, the writer Francis Spufford, in his novel Red Plenty: "The world was lifting itself up out of darkness and beginning to shine, and mathematics was how he could help. It was his contribution. It was what he could give, according to his abilities. He was lucky enough to live in the only country on the planet where human beings had seized the power to shape events according to reason."</div>
+</div>
+
+<div class="para"><span class="num">14</span>
+  <div class="cn">一个简单的行为干预——比如调整价格、修改一条法规，或者，上帝保佑，干脆去问问人们需要什么——往往一个下午就能达成目标，而控制论装置却要苦苦建模数周。作为简单系统的控制框架，控制论的智力含量毋庸置疑；但把它用于经济，却把它本该解决的问题的难度放大了。</div>
+  <div class="en">A simple behavioral intervention, such as adjusting a price, changing a regulation, or God forbid, simply asking people what they need, could often have achieved in an afternoon what the cybernetic apparatus was struggling to model in weeks. The intelligence of the cybernetics as a framework for control of simple systems is unquestionable, but its application to the economy inflated the difficulty of the problem it was meant to solve.</div>
+</div>
+
+<h2>四、穆齐尔：体面的愚蠢与聪明的愚蠢 <span>Musil: Honorable vs. Intelligent Stupidity</span></h2>
+
+<div class="para"><span class="num">15</span>
+  <div class="cn">奥地利小说家、散文家罗伯特·穆齐尔在 1937 年的一次演讲《论愚蠢》中，提出了整个愚蠢文献里或许最重要的一对区分。他把"<strong>体面的愚蠢</strong>"（honorable stupidity）——即单纯的认知局限，或者无法理解一段困难的论证——与他认为危险得多的"<strong>聪明的愚蠢</strong>"（intelligent stupidity）区分开来。这一洞见正是穆齐尔那本我最喜欢的小说《没有个性的人》的核心关切。聪明的愚蠢调动智力的全部资源去为某个错误服务。它不是思考的失败，而是华丽地、系统性地朝着错误的方向思考。一个跟不上数学证明的学生，在穆齐尔的意义上并不愚蠢；而一位数学教授为了捍卫一个连小孩都能看出是错误的命题，建起一座优雅的理论大厦，这才是聪明的愚蠢。</div>
+  <div class="en">The Austrian novelist and essayist, Robert Musil, in a 1937 lecture, "On Stupidity," described what may be the most important distinction in the whole literature of stupidity. He separated "honorable stupidity," which is a simple cognitive limitation, or the inability to grasp a difficult argument, from "intelligent stupidity," which he considered far more dangerous. This insight is the central concern of my favorite novel of Musil's, The Man Without Qualities. Intelligent stupidity marshals all the resources of the intellect in the service of an error. It is not the failure to think; it is thinking flamboyantly and systematically in the wrong direction. A student who cannot follow a mathematical proof is not stupid in Musil's sense. A math professor who builds an elegant theoretical edifice to defend a proposition a child could see is false is intelligently stupid.</div>
+</div>
+
+<div class="para"><span class="num">16</span>
+  <div class="cn">认真对待愚蠢的并非穆齐尔一人。小说家们早已洞悉智力与愚蠢的关系，其清晰程度是大多数科学家有意忽略的。或许是因为小说能够展现智力自我吞噬的过程——对一个理性主义者而言，那是相当难以下咽的景象。</div>
+  <div class="en">Musil was not alone in taking stupidity seriously. Novelists have long understood the intelligence-stupidity relationship with a clarity that most scientists choose to ignore. Perhaps because fiction can show the process by which an intelligence can devour itself, a rather unpalatable spectacle to a rationalist.</div>
+</div>
+
+<div class="para"><span class="num">17</span>
+  <div class="cn">乔纳森·斯威夫特的《格列佛游记》描写了拉加多科学院，那里的研究者们部署着各种精心设计的实验方法：有人从黄瓜里提取阳光，有人把大理石软化成枕头，还有一位同事在培育不长毛的绵羊。斯威夫特的讽刺显然指向了形形色色被误导的系统性探究。这些都是被困在过于僵硬的框架里的智力，其产出比什么都不做还要糟糕。在飞岛国拉普达，才华横溢的数学家和技艺精湛的音乐家运用射影几何来建造没有直角的房屋，厨师则按几何图形准备饭菜。这些在数学中精妙而强大的抽象，一旦被指向错误的实际问题，就变得束手无策。</div>
+  <div class="en">Jonathan Swift's Gulliver's Travels describes the Academy of Lagado, whose researchers deploy a variety of elaborate experimental methodologies. One is extracting sunbeams from cucumbers while another softens marble into pillows. A third colleague breeds naked sheep. Swift's satire is obviously targeted at a variety of forms of misdirected systematic inquiry. These are forms of intelligence trapped in frameworks so rigid that they produce outcomes that are worse than doing nothing. In the sky city of Laputa, brilliant mathematicians and accomplished musicians apply projective geometry in order to build with no right angles and chefs prepare meals based on geometric figures. These are abstractions of exquisite subtlety and power in mathematics that become helpless when directed at the wrong practical problems.</div>
+</div>
+
+<div class="para"><span class="num">18</span>
+  <div class="cn">威廉·加迪斯在他的《认同》中呈现了一个充斥着伪造、误认与赝品的社会，其中巨大的巧思全都被用来服务于不真实。主人公怀亚特·格温制作的佛兰德斯画作赝品，所需的技巧和知识比原创作品还要多。他的伪作技术上精湛，艺术史上无可挑剔，而本质上完全是欺诈。他笔下众多人物在层层升级的误认对话中彼此错身而过，动用可观的言语智力，只为加深普遍的困惑。</div>
+  <div class="en">William Gaddis in his The Recognitions presents a society of forgery, misattribution, and counterfeiting in which enormous ingenuity is expended in the service of inauthenticity. The protagonist, Wyatt Gwyon, produces forged Flemish paintings that require more skill and knowledge than original compositions. His forgeries are technically masterful, art-historically impeccable, and completely fraudulent. Each of his many characters talk past one another in dialogues of escalating misrecognition, deploying considerable verbal intelligence to deepen general confusion.</div>
+</div>
+
+<div class="para"><span class="num">19</span>
+  <div class="cn">托马斯·品钦的《万有引力之虹》描写了二战时期庞大的官僚与军事机器，它作为一台把理性规划转化为灾难的机器而运转。品钦笔下的卡特尔与火箭工程师绝非不聪明，恰恰相反——他们的能力结晶便是 V-2 火箭，那是一种威胁着要摧毁西方饱受战火之城市的武器。品钦描绘了一个制度性智力沦为集体愚蠢的世界。</div>
+  <div class="en">Thomas Pynchon's Gravity's Rainbow describes a vast bureaucratic and military apparatus of World War II that functions as a machine for converting rational planning into catastrophe. Pynchon's cartels and rocket engineers are not unintelligent, quite the opposite, and their competence is the V-2 rocket, that threatens to annihilate the war-ravaged cities of the West. Pynchon describes a world in which institutional intelligence becomes a form of collective stupidity.</div>
+</div>
+
+<h2>五、五百年的愚蠢思想史 <span>Five Centuries of Thinking About Stupidity</span></h2>
+
+<div class="para"><span class="num">20</span>
+  <div class="cn">不少哲学家试图为理解这一反常现象提供框架。伊拉斯谟在 1511 年的《愚人颂》中提出，愚蠢是人类成就的引擎。若没有自欺与过度自信，什么都不会被尝试。对伊拉斯谟来说，问题不在于一个文明是否会产生愚蠢，而在于它产生的那种愚蠢能否被它自己熬过去。</div>
+  <div class="en">A number of philosophers have sought to provide a framework for understanding this perverse phenomenon. Erasmus, in 1511, in The Praise of Folly, suggests that folly is the engine of human accomplishment. Without self-delusion and overconfidence, nothing would ever get attempted. The challenge for Erasmus was not whether a civilization produces stupidity, but whether it will produce the kind that can be survived.</div>
+</div>
+
+<div class="para"><span class="num">21</span>
+  <div class="cn">迪特里希·朋霍费尔 1943 年从纳粹监狱中写作时提出，愚蠢不是一种认知缺陷，而是一种被强加的社会学结构。处于权力蛊惑之下的人，往往会交出自己独立判断的能力，变成"愚蠢"的工具。而意大利经济史学家卡洛·奇波拉在 1976 年出版的《人类愚蠢基本法则》中，把愚蠢的人定义为：让别人蒙受损失，自己却得不到任何好处、甚至反受其害的人。奇波拉还大胆提出，愚蠢之人在所有人群中的比例是恒定的——从教授到水管工，从将军到门房，概莫能外。而我要顺着斯威夫特和穆齐尔的推测补充一句：比例恒定，但威力不恒定——系统越复杂，愚蠢的当量就越大。</div>
+  <div class="en">Dietrich Bonhoeffer, writing from a Nazi prison in 1943, suggests that stupidity is not a cognitive defect but an imposed sociological structure. People under the spell of power tend to surrender their capacity for independent judgment and become "stupid" instruments. And Carlo Cipolla, an Italian economic historian, in the Basic Laws of Human Stupidity published in 1976, defined a stupid person as someone who causes losses to others while deriving no gain, or even harm, for themselves. Cipolla was daring enough to propose that the proportion of stupid people is constant across all populations, from professors, plumbers, generals, and janitors. I would suggest, in line with the speculations of Swift and Musil, that it only gets worse with complication.</div>
+</div>
+
+<h2>六、愚蠢为什么会存活下来 <span>Why Selection Has Not Eliminated Stupidity</span></h2>
+
+<div class="para"><span class="num">22</span>
+  <div class="cn">如果愚蠢对行使它的人代价高昂，那么自然选择、乃至文化选择，为什么不把它从生物种群中清除掉？一个显而易见的可能是：环境发生了变化，使得某种先前的行为过时了。</div>
+  <div class="en">If stupidity is costly to its practitioners why does natural or perhaps even cultural selection not eliminate it from populations of organisms? One obvious possibility is a change in the environment that renders a previous behavior obsolete.</div>
+</div>
+
+<div class="para"><span class="num">23</span>
+  <div class="cn">数百万年来，与远处天体光源（月亮和星星）保持固定角度，在整个动物界都被证明是一种至关重要的导航启发式。它高效、可靠，且只需要极少的神经硬件。然而一旦人类发明了人工照明，一个曾沿用万古的策略就变成了自杀性的。飞蛾绕着烛火螺旋坠落，并不是导航失败——它是在使用一条久经考验的经验法则，只是环境的改变使这条法则错得灾难性。</div>
+  <div class="en">For millions of years, maintaining a fixed angle to a distant celestial light source, the moon and the stars, proved to be a vital navigational heuristic across the animal world. It is efficient, reliable, and requires minimal neural hardware. Once humans invented artificial illumination, a strategy that had worked for eons became suicidal. A moth spiraling into a candle flame is not failing to navigate, it is using a time-tested rule-of-thumb rendered catastrophically wrong by a change in context.</div>
+</div>
+
+<div class="para"><span class="num">24</span>
+  <div class="cn">智力和愚蠢原来是<span class="term" title="chronometrical">分时代的</span>。一个绝妙的启发式和一个致命的启发式，可以是同一个启发式，区别只在于世界发生了一次意料之外的位移。海龟一亿年来循着月光走向大海，如今它们转向的却是海滨公寓那一片片涌现的灯光。信天翁演化出了在海面掠食鱼类的能力，如今却不知不觉地叼起漂浮的塑料，回去喂给雏鸟。</div>
+  <div class="en">Intelligence and stupidity turn out to be chronometrical. A brilliant heuristic and a fatal one can be the same heuristic, separated by an unexpected shift in the world. Sea turtles have followed moonlight to the ocean for 100 million years and now they orient toward the artificial illumination of mushrooming beachfront condos. Albatross have evolved to scoop fish from the ocean surface and now unknowingly collect floating plastic and feed it to their chicks.</div>
+</div>
+
+<div class="para"><span class="num">25</span>
+  <div class="cn">蛇形虫草属真菌（<em>Ophiocordyceps</em>）会感染木蚁并劫持它们的行为回路。被感染的蚂蚁会爬到植物茎干的精确高度，把上颚咬进叶片背面，然后死去——这个位置正好便于真菌散播孢子。蚂蚁的行为程序被黑了。这只蚂蚁正在执行一系列复杂的动作——攀爬、定位、抓紧——而这一切都是在为另一个生物体服务。这只蚂蚁完美地印证了朋霍费尔的想法：一种能力被恶意主体征用，去解决错误的问题。也许，专业化会产出局部的智力，而这种局部智力一旦被过度延伸，就会产生全局性的愚蠢。这是一种尺度和领域上的变化，与飞蛾所遭遇的环境变化相对应。</div>
+  <div class="en">The fungus Ophiocordyceps infects carpenter ants and coopts their behavioral circuitry. An infected ant climbs to a precise height on a plant stem, clamps its mandibles onto the underside of a leaf, and dies, ideally positioned for the fungus to disperse its spores. The ant's behavioral program has been hacked. The ant is performing a sophisticated sequence of actions, including climbing, orienting, and gripping in the service of another organism. This is an ant perfectly captured by Bonhoeffer's idea of competence co-opted by a malicious agent to solve the wrong problem. Perhaps specialization produces local intelligence that when overextended can generate global stupidity. This would be a change in scale and domain that corresponds to the moth's change of environment.</div>
+</div>
+
+<div class="para"><span class="num">26</span>
+  <div class="cn">物理学家开尔文勋爵调动了他全部的物理学知识，去证明比空气重的飞行器不可能实现——而不到十年之后，莱特兄弟就让一架比空气重的飞机飞上了天。尼古拉·特斯拉拒斥量子力学和相对论，主张未来的人类文明将靠"地球共振"所释放的能量来运转。帕西瓦尔·罗威尔则用他的望远镜在火星表面绘制出一条条"运河"，宣称那是外星人的灌溉渠。这些都是对某个观念的过度执着与过度开发——远远离开了该观念曾经生长繁盛的领地，或被它毫不客气地驱逐出境的地方。</div>
+  <div class="en">The physicist Lord Kelvin marshaled all his physics knowledge to prove that heavier than air flying machines are impossible less than a decade before the Wright brothers flew a heavier than air airplane. Nikola Tesla rejected quantum mechanics and the theory of relativity and argued that future human civilization would run on the energy of the Earth through "earth resonance." And Percival Lowell used his telescopes to map "canals" on the surface of Mars that he claimed were alien irrigation ditches. These are all examples of the overcommitment, and overdevelopment of an idea, far from the territory in which an idea once grew and flourished or from which it was unceremoniously banished.</div>
+</div>
+
+<h2>七、超级智能是超级愚蠢的序幕 <span>Super-Intelligence as the Opening Act</span></h2>
+
+<div class="para"><span class="num">27</span>
+  <div class="cn">人工智能从设计上就是有史以来最强大的认知人造物。它被工程化来最小化使用者的努力，去执行那些人类会觉得耗时、甚至不可能完成的任务。问题当然在于：工具越好用，使用者就越不需要自己思考。而在一种恶性螺旋中，使用者思考得越少，就越依赖他们的工具。直到有一天工具消失，整个系统随之崩塌。</div>
+  <div class="en">Artificial intelligence is by design the most powerful cognitive artifact ever created. It is engineered to minimize user effort by performing tasks that humans would otherwise find time consuming or impossible. The problem of course is that the better the tool gets the less the user needs to think for themselves. And in a vicious spiral, the less the user thinks the more dependent they become on their tools. That is until the tool disappears and the whole system collapses.</div>
+</div>
+
+<div class="para"><span class="num">28</span>
+  <div class="cn">如果智力是愚蠢的必要前提，且智力与愚蠢同步增长——把事情错得惊天动地需要真正的智力——那么超级智能，将是一个"超级愚蠢"时代的开场演出。</div>
+  <div class="en">If intelligence is a necessary precondition for stupidity, and intelligence and stupidity scale together such that it takes real intelligence to be spectacularly stupid, then super-intelligence will be the opening act to an era of super-stupidity.</div>
+</div>
+
+<div class="para"><span class="num">29</span>
+  <div class="cn">AI 幻觉或许正是这一动态的首个证据。大语言模型会生成流畅、自信、细致的文本，而这些文本又有规律地、在事实上是错的。这不是一个简单的 bug，而是那些为"诱人"和"可信"而非"真实"进行优化的系统的结构性特征。危险也不在于 AI 会出错——毕竟人类一直都在出错，但正因为知道这一点，人类才发明了检测和纠正错误的手段。我们称之为科学方法。</div>
+  <div class="en">AI hallucination might be the first evidence of this dynamic. Large language models produce fluent, confident, detailed text that is, with some regularity, factually wrong. And this is not a simple bug but a structural feature of systems that optimize for appeal and plausibility rather than truth. And the danger is not that the AI will be wrong, after all, humans are wrong all the time, but knowing this, humans have invented means to detect and correct errors. We call this the scientific method.</div>
+</div>
+
+<div class="para"><span class="num">30</span>
+  <div class="cn">危险在于，AI 会以人类再也无法察觉的方式出错——因为本该用来发现错误的能力，已经被外包给了机器，或者已经超出了人类心智的能力范围。我们面对的前景是一种如此精密的愚蠢，以至于在它的受益者看来，它与智力无从分辨。这正是道格拉斯·亚当斯《银河系漫游指南》里的那则寓言：关于生命、宇宙以及一切的终极问题，答案是 42。</div>
+  <div class="en">The danger is that an AI will be wrong in ways humans can no longer detect because the very capacities that would catch the error have been outsourced to the machine or exceed the capacities of human minds. We face the prospect of a stupidity so sophisticated that it becomes indistinguishable, to its beneficiaries, from intelligence. This is the parable of Douglas Adams' The Hitchhiker's Guide to the Galaxy, where the answer to the ultimate question, the meaning of life, the universe, and everything, is 42.</div>
+</div>
+
+<div class="para"><span class="num">31</span>
+  <div class="cn">我想提出一个<span class="term" title="a modest proposal：暗指斯威夫特1729年同名讽刺名篇">温和的建议</span>：我们需要一门"愚蠢的科学"，其严谨程度要与方兴未艾的智力科学相匹配。这并不需要数十亿美元的投入。它将包括：探究智能系统产出愚蠢结果的机制；研究尽管愚蠢具有选择代价、却仍被保留下来的演化动力学；推动设计原则的发展，以区分哪些工具是在增强认知、哪些工具是在替代认知；以及调查在何种制度条件下，集体智力会退化成集体愚蠢。</div>
+  <div class="en">I would like to make a modest proposal and suggest that we need a science of stupidity as rigorous as our emerging sciences of intelligence. This will not require billions of dollars of investment. It would involve inquiries into the mechanisms by which intelligent systems produce stupid outcomes. It would include studying the evolutionary dynamics that maintain stupidity despite its selective costs. It would promote the development of design principles that distinguish tools which enhance cognition from tools which replace it. And it would include surveying the institutional conditions under which collective intelligence degrades into collective stupidity.</div>
+</div>
+
+<div class="para"><span class="num">32</span>
+  <div class="cn">愚蠢不是把智力减掉后剩下的东西，它是一种主动的机制，有自己的逻辑、自己的动力学，以及一种寄生于巧思之上的、无边界增长的能力。在一个痴迷于越来越强大的认知技术的世界里，理解愚蠢并非只是一桩学术练习——它很可能是我们所能做的最聪明的事。</div>
+  <div class="en">Stupidity is not what remains when intelligence is subtracted, it is an active mechanism with its own logic, its own dynamics, and a capacity for unbounded growth parasitic on ingenuity. In a world obsessed with ever more powerful cognitive technologies, understanding stupidity is not merely an academic exercise, it might prove to be the most intelligent thing we do.</div>
+</div>
+
+<div class="gloss" id="gloss">
+  <h2>译注 · 关键术语与专有名词对照</h2>
+  <table>
+    <tr><th>原文</th><th>译文</th><th class="why">译法说明</th></tr>
+    <tr><td>evil twin</td><td>邪恶双胞胎</td><td class="why">原文含圣经该隐／亚伯典故（dissimulating Cain / cerebral Abel），译文保留比喻并补出人物，使中文读者能领会对照关系。</td></tr>
+    <tr><td>honorable stupidity<br>intelligent stupidity</td><td>体面的愚蠢<br>聪明的愚蠢</td><td class="why">穆齐尔 1937 年演讲的核心对举。前者指认知能力不足，后者指智力被用于服务错误。中文"聪明"在此是反讽用法，与"体面"形成对照。</td></tr>
+    <tr><td>difficulty <em>X</em></td><td>难度为 X 的问题</td><td class="why">保留符号 X，与下句对称，体现"变容易／变难"的形式化定义。</td></tr>
+    <tr><td>cottage industry</td><td>小作坊式的产业</td><td class="why">含轻微贬义，指规模小、自成一格的一群人。直译"家庭手工业"在中文语境易生歧义，故取意译。</td></tr>
+    <tr><td>parsimonious</td><td>简约的</td><td class="why">此处与 elegant 并列，形容量子力学描述的简洁经济，非"吝啬"义。</td></tr>
+    <tr><td>servomechanism</td><td>伺服机构</td><td class="why">控制论标准术语，指按反馈自动校正的随动系统。用于强调"经济不是这类系统"。</td></tr>
+    <tr><td>chronometrical</td><td>分时代的</td><td class="why">作者自造用法，指同一启发式在不同时代／环境下会从"绝妙"翻转为"致命"。译为"分时代的"以保留时间维度。</td></tr>
+    <tr><td>Ophiocordyceps</td><td>蛇形虫草属真菌</td><td class="why">即俗称的"僵尸真菌"，寄生木蚁并操控其行为。保留拉丁属名以免与其他虫草混淆。</td></tr>
+    <tr><td>a modest proposal</td><td>一个温和的建议</td><td class="why">直接呼应斯威夫特 1729 年同名讽刺名篇《一个温和的建议》，作者在此是有意用典。</td></tr>
+    <tr><td>Red Plenty</td><td>《红色富足》</td><td class="why">弗朗西斯·斯帕福德 2010 年小说，写苏联计划经济与最优控制理论。暂无通行中译本，此为直译。</td></tr>
+    <tr><td>The Recognitions</td><td>《认同》</td><td class="why">威廉·加迪斯 1955 年小说。暂无通行中译本，此为直译。</td></tr>
+    <tr><td>Project Cybersyn</td><td>赛博协同工程</td><td class="why">1971—1973 年智利阿连德政府的控制论经济管理项目，音意合译。</td></tr>
+    <tr><td>Lord Kelvin</td><td>开尔文勋爵</td><td class="why">1895 年断言"比空气重的飞行器不可能"，8 年后莱特兄弟试飞成功。</td></tr>
+  </table>
+</div>
+
+<footer>
+  原文 © David C. Krakauer / Nautilus · 中译与排版仅供学习交流<br>
+  原文链接：nautil.us/what-makes-humans-stupid-1282459
+</footer>
+
+</div>
+</body>
+</html>
