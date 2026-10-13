@@ -4,9 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>是什么让人类愚蠢 | What Makes Humans Stupid — 中英对照全译</title>
+
+<!-- 图标：覆盖浏览器标签 / iOS 与鸿蒙「添加到桌面」/ Android 桌面快捷方式 -->
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="../favicon-512.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#fbfaf7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Phil的小站">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="圣塔菲研究所所长 David C. Krakauer 长文《What Makes Humans Stupid》中英对照全译。">
+<meta property="og:site_name" content="Phil的小站">
+<meta property="og:title" content="是什么让人类愚蠢 | What Makes Humans Stupid">
+<meta property="og:description" content="中英对照全译 · Phil的小站">
+<meta property="og:image" content="https://philcui07.github.io/article/favicon-512.png">
 <style>
   :root{
     --bg:#fbfaf7;
@@ -31,31 +47,99 @@
   .wrap{
     max-width:780px;
     margin:0 auto;
-    padding:56px 26px 100px;
+    padding:34px 26px 100px;
   }
 
-  /* ---------- 站点导航条 ---------- */
-  .topbar{
+  /* ---------- 常驻顶栏（滚动折叠，iOS 大标题风格） ---------- */
+  .sticky-head{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(251,250,247,.93);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .28s ease, box-shadow .28s ease;
+  }
+  .sticky-head.compact{
+    border-bottom-color:var(--rule);
+    box-shadow:0 2px 14px rgba(80,70,50,.08);
+  }
+  .sh-inner{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 26px 14px;
+    transition:padding .3s cubic-bezier(.4,0,.2,1);
+  }
+  .sticky-head.compact .sh-inner{ padding:8px 26px; }
+
+  .sh-bar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding-bottom:20px;
-    margin-bottom:26px;
-    border-bottom:1px solid var(--rule);
     font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
     font-size:13px;
   }
-  .topbar .back{
+  /* 返回按钮：触屏设备点击区不小于 44px，鼠标设备可以紧凑些 */
+  .sh-bar .back{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    min-height:34px;
+    padding-right:12px;
     color:var(--accent);
     text-decoration:none;
-    border-bottom:1px dotted var(--accent);
+    font-size:13px;
+    white-space:nowrap;
   }
-  .topbar .back:hover{color:#6d2d2d;}
-  .topbar .sitename{
+  .sh-bar .back .arrow{
+    display:inline-block;
+    transition:transform .2s ease;
+  }
+  .sh-bar .back:hover{color:#6d2d2d;}
+  .sh-bar .back:hover .arrow{transform:translateX(-3px);}
+  .sh-bar .sitename{
     letter-spacing:.18em;
     text-transform:uppercase;
     color:#bfb9ab;
     font-size:11px;
+  }
+
+  /* 大标题：动画 font-size（真正收窄布局高度），缩到一行标题的体量 */
+  .sh-title{
+    margin:12px 0 0;
+    font-size:32px;
+    line-height:1.28;
+    font-weight:700;
+    letter-spacing:.01em;
+    display:flex;
+    flex-direction:column;
+    transition:font-size .3s cubic-bezier(.4,0,.2,1), margin .3s cubic-bezier(.4,0,.2,1);
+  }
+  .sticky-head.compact .sh-title{
+    font-size:18px;
+    margin:3px 0 0;
+  }
+  .t-cn{display:block;}
+  .t-en{
+    display:block;
+    font-size:16px;
+    line-height:1.5;
+    font-weight:400;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-top:8px;
+    letter-spacing:0;
+    transition:font-size .3s cubic-bezier(.4,0,.2,1), margin .3s cubic-bezier(.4,0,.2,1), opacity .25s ease;
+  }
+  .sticky-head.compact .t-en{
+    font-size:12px;
+    margin-top:2px;
+    opacity:.55;
+  }
+  /* 触屏（手机/平板/鸿蒙）一律保证 44px 点击区 */
+  @media (hover:none), (pointer:coarse){
+    .sh-bar .back{ min-height:44px; }
   }
 
   /* ---------- 阅读工具条 ---------- */
@@ -92,36 +176,20 @@
     color:#fff;
   }
 
-  /* ---------- 头部 ---------- */
-  header{
+  /* ---------- 文章元信息（标题已移入常驻顶栏） ---------- */
+  .article-meta{
     text-align:center;
-    padding-bottom:34px;
+    padding-bottom:30px;
     border-bottom:1px solid var(--rule);
-    margin-bottom:8px;
+    margin-bottom:26px;
   }
   .kicker{
     font-size:12px;
     letter-spacing:.22em;
     color:var(--accent);
     text-transform:uppercase;
-    margin-bottom:20px;
+    margin-bottom:18px;
     font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
-  }
-  h1{
-    font-size:34px;
-    line-height:1.35;
-    margin:0 0 14px;
-    font-weight:700;
-    letter-spacing:.01em;
-  }
-  h1 .en-title{
-    display:block;
-    font-size:19px;
-    font-weight:400;
-    color:var(--ink-soft);
-    font-style:italic;
-    margin-top:10px;
-    letter-spacing:0;
   }
   .sub{
     font-size:15.5px;
@@ -243,6 +311,7 @@
     padding-bottom:10px;
     border-bottom:1px solid var(--rule);
     font-weight:700;
+    scroll-margin-top:112px;
   }
   h2 span{
     display:block;
@@ -293,8 +362,16 @@
   }
 
   @media (max-width:680px){
-    .wrap{padding:36px 18px 70px;}
-    h1{font-size:26px;}
+    .wrap{padding:26px 18px 70px;}
+    .sh-inner{padding:14px 18px 10px;}
+    .sticky-head.compact .sh-inner{padding:6px 18px;}
+    .sh-title{font-size:23px;}
+    /* 移动端缩得别太狠，保证标题仍清晰可读 */
+    .sticky-head.compact .sh-title{font-size:16px;}
+    .t-en{font-size:13px;}
+    .sticky-head.compact .t-en{font-size:11px;}
+    .sh-bar .back{font-size:13px;}
+    .sh-bar .back .back-text{display:inline;}
     body{font-size:16px;}
     .cn{font-size:16px;}
     .num{display:none;}
@@ -324,23 +401,25 @@
 </style>
 </head>
 <body>
+
+<!-- 常驻顶栏：随滚动折叠（iOS 大标题效果） -->
+<header class="sticky-head" id="stickyHead">
+  <div class="sh-inner">
+    <div class="sh-bar">
+      <a class="back" href="../index.html"><span class="arrow">&larr;</span><span class="back-text">返回目录</span></a>
+      <span class="sitename">Phil的小站</span>
+    </div>
+    <h1 class="sh-title">
+      <span class="t-cn">是什么让人类愚蠢</span>
+      <span class="t-en">What Makes Humans Stupid</span>
+    </h1>
+  </div>
+</header>
+
 <div class="wrap">
 
-<nav class="topbar">
-  <a class="back" href="../index.html">&larr; 返回目录</a>
-  <span class="sitename">Phil的小站</span>
-</nav>
-
-<div class="readerbar">
-  <span class="hint">悬停任意段落，可看该段英文原文</span>
-  <button id="toggleEn" type="button" class="btn" aria-pressed="false">始终显示英文</button>
-</div>
-
-<header>
+<div class="article-meta">
   <div class="kicker">Nautilus · 中英对照全译</div>
-  <h1>是什么让人类愚蠢
-    <span class="en-title">What Makes Humans Stupid</span>
-  </h1>
   <p class="sub">把事情错得惊天动地，是需要智力的。一篇关于我们如何走向覆灭的随笔。
     <em>It takes intelligence to get things spectacularly wrong. An essay on our undoing.</em>
   </p>
@@ -350,7 +429,12 @@
     原文刊于 Nautilus，2026 年 7 月 8 日 ·
     <a href="https://nautil.us/what-makes-humans-stupid-1282459" target="_blank">nautil.us/what-makes-humans-stupid-1282459</a>
   </p>
-</header>
+</div>
+
+<div class="readerbar">
+  <span class="hint">悬停任意段落，可看该段英文原文</span>
+  <button id="toggleEn" type="button" class="btn" aria-pressed="false">始终显示英文</button>
+</div>
 
 <div class="note">
   <b>译者说明：</b>本文为全文首译，依 Nautilus 英文原文逐段对译，未作删节。排版采用「中文正文 + 英文原文对照」，便于核验译文。人名、书名、术语统一于文末<a href="#gloss" style="color:var(--accent);">译注表</a>。文中浅黄底色为中文语境下补充的 explanatory 成分，不影响原意。
@@ -580,6 +664,23 @@
     syncBtn();
   });
 
+  /* 顶栏随滚动折叠：超过阈值即收缩，返回入口始终常驻 */
+  var head = document.getElementById('stickyHead');
+  var compact = null, ticking = false;
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var next = y > 48;
+    if (next !== compact) {
+      compact = next;
+      head.classList.toggle('compact', next);
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
   /* 移动端没有 hover：点一下段落展开原文 */
   if (noHover) {
     document.querySelector('.readerbar .hint').textContent = '轻触任意段落，可看该段英文原文';
@@ -600,7 +701,12 @@
       if (body.classList.contains('show-en')) return;
       en.classList.remove('flip');
       var r = en.getBoundingClientRect();
-      if (r.bottom > window.innerHeight - 10) en.classList.add('flip');
+      if (r.bottom > window.innerHeight - 10) {
+        en.classList.add('flip');
+        // 翻到上方若会被常驻顶栏挡住，就还是放回下方
+        var headH = head.getBoundingClientRect().height;
+        if (en.getBoundingClientRect().top < headH + 4) en.classList.remove('flip');
+      }
     });
     p.addEventListener('mouseleave', function () {
       en.classList.remove('flip');

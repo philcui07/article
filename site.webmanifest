@@ -1,0 +1,18 @@
+{
+  "name": "Phil的小站",
+  "short_name": "Phil的小站",
+  "description": "译文、思考，以及一切有趣或引人深思的事物。",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbfaf7",
+  "theme_color": "#fbfaf7",
+  "icons": [
+    { "src": "./favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "./apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}
