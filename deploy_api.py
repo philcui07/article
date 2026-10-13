@@ -40,7 +40,7 @@ r = requests.get(f"{B}/contents/README.md", headers=H, timeout=30)
 if r.status_code == 404:
     print("\n[0/4] 仓库为空 → 先用 Contents API 建立初始 commit")
     r = requests.put(f"{B}/contents/README.md", headers=H, timeout=60,
-                     json={"message": "init: 初始化仓库",
+                     json={"message": "feat: 首页改名 Phil的小站；文章页英文改为悬停浮层显示（移动端轻触展开）",
                            "content": base64.b64encode(files["README.md"]).decode()})
     r.raise_for_status()
     print("      初始 commit 已建立")

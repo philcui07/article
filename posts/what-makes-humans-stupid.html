@@ -55,6 +55,40 @@
     font-size:11px;
   }
 
+  /* ---------- 阅读工具条 ---------- */
+  .readerbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:30px;
+    padding:9px 14px;
+    background:#f6f2e9;
+    border:1px solid var(--rule);
+    border-radius:5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .readerbar .btn{
+    flex:none;
+    font-family:inherit;
+    font-size:12px;
+    color:var(--accent);
+    background:#fff;
+    border:1px solid #ddd4c2;
+    border-radius:4px;
+    padding:4px 12px;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .readerbar .btn:hover{ background:#fdf8f0; border-color:#cfc3ab; }
+  .readerbar .btn[aria-pressed="true"]{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+
   /* ---------- 头部 ---------- */
   header{
     text-align:center;
@@ -131,21 +165,62 @@
     font-size:17px;
     line-height:1.95;
     text-align:justify;
-    margin-bottom:10px;
+    margin-bottom:0;
+    border-radius:3px;
+    transition:background .15s ease;
   }
   .cn .term{
     border-bottom:1px dotted var(--accent);
     cursor:help;
   }
+
+  /* 英文原文：默认收起。hover 时以浮层浮现，完全不占正文空间 */
   .en{
+    position:absolute;
+    left:0; right:0;
+    top:calc(100% + 9px);
+    z-index:30;
     font-size:13.5px;
-    line-height:1.75;
+    line-height:1.78;
     color:var(--en);
     font-family:Georgia,"Times New Roman",serif;
     font-style:italic;
-    padding-left:14px;
-    border-left:2px solid var(--rule);
     text-align:justify;
+    background:#fffefb;
+    border:1px solid #ded8c9;
+    border-radius:6px;
+    box-shadow:0 12px 30px rgba(80,70,50,.17);
+    padding:15px 18px;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-5px);
+    transition:opacity .15s ease, transform .15s ease, visibility .15s;
+  }
+  /* 浮层会超出屏幕底部时，翻到段落上方 */
+  .en.flip{
+    top:auto;
+    bottom:calc(100% + 9px);
+    transform:translateY(5px);
+  }
+  /* 支持 hover 的设备：悬停即显 */
+  @media (hover:hover) and (pointer:fine){
+    .para:hover .en{ opacity:1; visibility:visible; transform:translateY(0); }
+    .para:hover .cn{ background:#faf6ec; }
+  }
+  /* 「始终显示」模式 / 移动端点开：改为内联展开 */
+  body.show-en .en,
+  .para.en-open .en{
+    position:static;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    box-shadow:none;
+    background:transparent;
+    border:0;
+    border-left:2px solid var(--rule);
+    border-radius:0;
+    padding:0 0 0 14px;
+    margin-top:10px;
   }
   .num{
     position:absolute;
@@ -221,10 +296,27 @@
     .cn{font-size:16px;}
     .num{display:none;}
     .para{padding-left:0;}
+    .readerbar{flex-wrap:wrap; gap:8px; font-size:12px; padding:8px 12px;}
+    .readerbar .hint{flex:1 1 auto; min-width:0;}
   }
   @media print{
     body{background:#fff;}
-    .en{color:#777;}
+    .readerbar{display:none;}
+    /* 打印时英文直接内联展开，便于对照 */
+    .en{
+      position:static !important;
+      opacity:1 !important;
+      visibility:visible !important;
+      transform:none !important;
+      box-shadow:none !important;
+      background:transparent !important;
+      border:0 !important;
+      border-left:2px solid #ccc !important;
+      border-radius:0 !important;
+      padding:0 0 0 12px !important;
+      margin-top:8px !important;
+      color:#666 !important;
+    }
   }
 </style>
 </head>
@@ -233,8 +325,13 @@
 
 <nav class="topbar">
   <a class="back" href="../index.html">&larr; 返回目录</a>
-  <span class="sitename">Article</span>
+  <span class="sitename">Phil的小站</span>
 </nav>
+
+<div class="readerbar">
+  <span class="hint">悬停任意段落，可看该段英文原文</span>
+  <button id="toggleEn" type="button" class="btn" aria-pressed="false">始终显示英文</button>
+</div>
 
 <header>
   <div class="kicker">Nautilus · 中英对照全译</div>
@@ -456,5 +553,57 @@
 </footer>
 
 </div>
+
+<script>
+(function () {
+  var body = document.body;
+  var btn  = document.getElementById('toggleEn');
+  var KEY  = 'article-show-en';
+  var paras = Array.prototype.slice.call(document.querySelectorAll('.para'));
+  var noHover = window.matchMedia('(hover: none)').matches;
+
+  /* 「始终显示英文」开关，记住偏好 */
+  function syncBtn() {
+    var on = body.classList.contains('show-en');
+    btn.textContent = on ? '恢复悬停显示' : '始终显示英文';
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+  if (localStorage.getItem(KEY) === '1') body.classList.add('show-en');
+  syncBtn();
+
+  btn.addEventListener('click', function () {
+    body.classList.toggle('show-en');
+    localStorage.setItem(KEY, body.classList.contains('show-en') ? '1' : '0');
+    syncBtn();
+  });
+
+  /* 移动端没有 hover：点一下段落展开原文 */
+  if (noHover) {
+    document.querySelector('.readerbar .hint').textContent = '轻触任意段落，可看该段英文原文';
+    paras.forEach(function (p) {
+      p.addEventListener('click', function () {
+        var wasOpen = p.classList.contains('en-open');
+        paras.forEach(function (x) { x.classList.remove('en-open'); });
+        if (!wasOpen) p.classList.add('en-open');
+      });
+    });
+  }
+
+  /* 桌面端：浮层要超出屏幕底部时，翻到段落上方显示 */
+  paras.forEach(function (p) {
+    var en = p.querySelector('.en');
+    if (!en) return;
+    p.addEventListener('mouseenter', function () {
+      if (body.classList.contains('show-en')) return;
+      en.classList.remove('flip');
+      var r = en.getBoundingClientRect();
+      if (r.bottom > window.innerHeight - 10) en.classList.add('flip');
+    });
+    p.addEventListener('mouseleave', function () {
+      en.classList.remove('flip');
+    });
+  });
+})();
+</script>
 </body>
 </html>
