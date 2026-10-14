@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Native 思维与组织变革 · 值得读的文章排名 | An AI-Native Reading List</title>
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#fbfaf7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Phil的小站">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="用 PV / UV / 转发分享 / 点赞四维加权规则，对全网 AI Native 思维方式与组织架构变革文章进行排名，列出最值得读的 18 篇。">
+<meta property="og:site_name" content="Phil的小站">
+<meta property="og:title" content="AI Native 思维与组织变革 · 值得读的文章排名">
+<meta property="og:description" content="四维加权 × 对数归一化 × 时效衰减：一份可复跑的 AI Native 阅读清单。">
+<meta property="og:image" content="https://philcui07.github.io/article/favicon-512.png">
+<style>
+  :root{
+    --bg:#fbfaf7;
+    --ink:#2b2b2b;
+    --ink-soft:#5a5a5a;
+    --en:#8d8779;
+    --rule:#e3dfd5;
+    --accent:#8c3b3b;
+    --accent-soft:#f5eee9;
+    --mark:#fdf6e3;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",Georgia,"Times New Roman",serif;
+    line-height:1.9;
+    font-size:17px;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 26px 100px;}
+
+  /* ---------- 大标题头（正常流，自然滚走；不做高度动画，避免顶栏抖动） ---------- */
+  .site-head{background:var(--bg);}
+  .sh-inner{
+    max-width:780px;
+    margin:0 auto;
+    padding:36px 26px 28px;
+  }
+  .sh-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;font-size:13px;
+  }
+  .sh-bar .back{
+    display:inline-flex;align-items:center;gap:6px;min-height:34px;padding-right:12px;
+    color:var(--accent);text-decoration:none;font-size:13px;white-space:nowrap;
+  }
+  .sh-bar .back .arrow{display:inline-block;transition:transform .2s ease;}
+  .sh-bar .back:hover{color:#6d2d2d;}
+  .sh-bar .back:hover .arrow{transform:translateX(-3px);}
+  .sh-bar .sitename{letter-spacing:.18em;text-transform:uppercase;color:#bfb9ab;font-size:11px;}
+  .sh-title{
+    margin:14px 0 0;font-size:32px;line-height:1.28;font-weight:700;letter-spacing:.01em;
+    display:flex;flex-direction:column;
+  }
+  .t-cn{display:block;}
+  .t-en{
+    display:block;font-size:16px;line-height:1.5;font-weight:400;color:var(--ink-soft);
+    font-style:italic;margin-top:8px;letter-spacing:0;font-family:Georgia,"Times New Roman",serif;
+  }
+
+  /* ---------- 紧凑条（fixed 悬浮；只动 transform/opacity，不触发布局重排） ---------- */
+  .mini-head{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(251,250,247,.93);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid transparent;
+    transform:translateY(-104%);opacity:0;pointer-events:none;
+    transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .28s ease,
+               border-color .28s ease, box-shadow .28s ease;
+  }
+  .mini-head.on{
+    transform:translateY(0);opacity:1;pointer-events:auto;
+    border-bottom-color:var(--rule);box-shadow:0 2px 14px rgba(80,70,50,.08);
+  }
+  .mh-inner{
+    max-width:780px;margin:0 auto;padding:8px 26px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .mini-head .back{
+    display:inline-flex;align-items:center;gap:6px;min-height:44px;padding-right:12px;
+    color:var(--accent);text-decoration:none;font-size:13px;white-space:nowrap;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+  .mini-head .back .arrow{display:inline-block;transition:transform .2s ease;}
+  .mini-head .back:hover{color:#6d2d2d;}
+  .mini-head .back:hover .arrow{transform:translateX(-3px);}
+  .mh-title{
+    font-size:15px;font-weight:700;line-height:1.4;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  /* ---------- 元信息 ---------- */
+  .article-meta{text-align:center;padding-bottom:30px;border-bottom:1px solid var(--rule);margin-bottom:26px;}
+  .kicker{
+    font-size:12px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;
+    margin-bottom:18px;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+  .sub{font-size:15.5px;color:var(--ink-soft);margin:0 auto 22px;max-width:600px;line-height:1.8;}
+  .sub em{display:block;font-size:13px;color:var(--en);margin-top:6px;font-style:italic;}
+  .byline{font-size:13.5px;color:var(--ink-soft);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;line-height:1.7;}
+  .byline strong{color:var(--ink);font-weight:600;}
+  .byline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+
+  /* ---------- 结论条 ---------- */
+  .readerbar{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    margin-bottom:30px;padding:9px 14px;background:#f6f2e9;border:1px solid var(--rule);
+    border-radius:5px;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    font-size:12.5px;color:var(--ink-soft);
+  }
+
+  /* ---------- 提示框 ---------- */
+  .note{
+    background:var(--accent-soft);border-left:3px solid var(--accent);
+    padding:16px 20px;margin:34px 0 44px;font-size:14px;color:var(--ink-soft);
+    line-height:1.85;border-radius:0 4px 4px 0;
+  }
+  .note b{color:var(--accent);}
+
+  /* ---------- 正文 ---------- */
+  h2{
+    font-size:20px;margin:52px 0 22px;padding-bottom:10px;border-bottom:1px solid var(--rule);
+    font-weight:700;scroll-margin-top:72px;
+  }
+  h2 span{display:block;font-size:12.5px;color:var(--en);font-weight:400;font-style:italic;margin-top:4px;}
+  p{margin:0 0 18px;}
+  a{color:var(--accent);}
+  .cn em{font-style:normal;background:var(--mark);padding:1px 2px;}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;
+    background:#f3f0e9;border:1px solid var(--rule);border-radius:3px;padding:1px 6px;
+  }
+
+  /* ---------- 公式 ---------- */
+  .formula{
+    background:#f6f2e9;border:1px solid var(--rule);border-radius:6px;
+    padding:18px 20px;margin:22px 0 26px;text-align:center;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:14.5px;line-height:2.0;color:var(--ink);overflow-x:auto;
+  }
+  .formula .f-main{font-size:16px;font-weight:700;}
+  .formula .f-sub{font-size:12px;color:var(--ink-soft);}
+
+  /* ---------- 权重表 / 总表 ---------- */
+  table{
+    width:100%;border-collapse:collapse;font-size:14px;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+  th,td{border:1px solid var(--rule);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.65;}
+  th{background:#f3f0e9;font-weight:600;font-size:13px;}
+  td.why{color:var(--ink-soft);}
+  .tbl-scroll{overflow-x:auto;margin:22px 0 30px;-webkit-overflow-scrolling:touch;}
+  .tbl-scroll table{min-width:640px;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  td .t-link{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+  td .t-link:hover{text-decoration:underline;}
+  .rank-cell{font-weight:700;color:var(--accent);font-size:15px;}
+  .bar{height:4px;background:var(--rule);border-radius:2px;margin-top:5px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:var(--accent);border-radius:2px;}
+  .prov{font-size:11.5px;color:var(--en);white-space:nowrap;}
+
+  /* ---------- 文章卡片 ---------- */
+  .card{
+    position:relative;background:var(--card,#fffdf9);background:#fffdf9;
+    border:1px solid var(--rule);border-radius:6px;padding:24px 26px;margin-bottom:20px;
+  }
+  .card .c-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;}
+  .rk{
+    flex:none;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+    border-radius:10px;padding:2px 10px;letter-spacing:.04em;
+  }
+  .rk.top{background:#6d2d2d;}
+  .card h3{font-size:19px;margin:0;font-weight:700;line-height:1.5;}
+  .card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--accent);}
+  .card h3 a:hover{color:var(--accent);}
+  .card .en-t{font-size:13px;color:var(--en);font-style:italic;font-family:Georgia,"Times New Roman",serif;margin:2px 0 8px;}
+  .card .c-meta{
+    font-size:12px;color:var(--en);margin-bottom:10px;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;}
+  .chip{
+    font-size:11.5px;color:var(--ink-soft);background:#f6f2e9;border:1px solid var(--rule);
+    border-radius:3px;padding:1px 8px;font-family:-apple-system,sans-serif;white-space:nowrap;
+  }
+  .chip b{color:var(--accent);font-weight:600;}
+  .card .c-desc{font-size:14.5px;color:var(--ink-soft);line-height:1.85;margin:0 0 10px;}
+  .card .c-why{font-size:13.5px;color:var(--ink);line-height:1.85;margin:0;}
+  .card .c-why b{color:var(--accent);}
+  .card .c-go{
+    margin-top:12px;font-size:12.5px;font-family:-apple-system,sans-serif;
+  }
+  .card .c-go a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);word-break:break-all;}
+  .card .c-go a:hover{text-decoration:underline;}
+
+  .legend{
+    font-size:12.5px;color:var(--ink-soft);background:#f6f2e9;border:1px dashed #d8cfbc;
+    border-radius:5px;padding:10px 14px;margin:0 0 24px;line-height:1.8;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  }
+
+  footer{
+    margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
+    font-size:12.5px;color:var(--en);text-align:center;line-height:1.8;
+    font-family:-apple-system,sans-serif;
+  }
+  footer a{color:var(--accent);text-decoration:none;}
+
+  @media (max-width:680px){
+    .wrap{padding:0 18px 70px;}
+    .sh-inner{padding:26px 18px 20px;}
+    .sh-title{font-size:23px;}
+    .t-en{font-size:13px;}
+    .mh-inner{padding:6px 18px;}
+    .mh-title{font-size:13.5px;}
+    body{font-size:16px;}
+    .readerbar{flex-wrap:wrap;gap:8px;font-size:12px;padding:8px 12px;}
+    .readerbar .hint{flex:1 1 auto;min-width:0;}
+    .card{padding:20px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="sh-inner">
+    <div class="sh-bar">
+      <a class="back" href="../index.html"><span class="arrow">&larr;</span><span class="back-text">返回目录</span></a>
+      <span class="sitename">Phil的小站</span>
+    </div>
+    <h1 class="sh-title">
+      <span class="t-cn">AI Native 思维与组织变革 · 值得读的文章排名</span>
+      <span class="t-en">An AI-Native Mindset &amp; Org Reading List, Ranked</span>
+    </h1>
+  </div>
+</header>
+
+<div class="mini-head" id="miniHead" aria-hidden="true">
+  <div class="mh-inner">
+    <a class="back" href="../index.html"><span class="arrow">&larr;</span><span class="back-text">返回</span></a>
+    <span class="mh-title">AI Native 思维与组织变革 · 值得读的文章排名</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="article-meta">
+  <div class="kicker">Reading List · 原创</div>
+  <p class="sub">用一条可复跑的排名规则，把全网讲「AI Native 思维方式」与「组织架构变化」的文章筛了一遍。
+    <em>One ranking rule — PV, UV, shares, likes — applied to 18 articles worth your evening.</em>
+  </p>
+  <p class="byline">
+    <strong>Phil</strong> · 2026 年 10 月 14 日 · 数据截至 2026-10-14 · 样本 18 篇（中 / 英）<br>
+    规则与数据口径见文中说明；所有文章标题均可点击跳转原文。
+  </p>
+</div>
+
+<div class="readerbar">
+  <span class="hint">榜单 = 四维互动分 × 平台权威 × 时效衰减；点标题读原文</span>
+  <span>综合分满分 100</span>
+</div>
+
+<div class="note">
+  <b>先说结论：</b>如果只读三篇——读 <b>#1《The Dot and the Swarm》</b>（Mollick 用实证推翻自己一年前的判断：智能体的组织，AI 自己学会了）；
+  读 <b>#2《From Hierarchy to Intelligence》</b>（Dorsey × 红杉：用「世界模型」取代中层管理，本轮组织辩论的总纲）；
+  读 <b>#5《AI Native 组织转型》</b>（中文里对 AI Native 组织定义最不掺水的一篇）。完整 18 篇与排名依据如下。
+</div>
+
+<h2>一、排名规则怎么设计 <span>The Ranking Rule</span></h2>
+
+<p>需求很直接：按 <em>PV、UV、转发分享、点赞</em> 的数量给文章排名。但真跑一遍数据就会发现一个尴尬的事实——<b>这四个数，绝大多数平台并不公开</b>：微信公众号只给到「阅读 / 在看」，头条与腾讯新闻的计数由 JS 动态加载抓不到，Substack 只公开点赞评论分享，海外媒体几乎只给 HN 点数。所以这条规则必须回答两个问题：<b>不同平台的数怎么可比</b>，以及<b>缺了的数怎么补</b>。</p>
+
+<p>最终规则分四层：</p>
+
+<div class="formula">
+  <div class="f-main">Score = 100 × ( 0.30·PV̂ + 0.20·UV̂ + 0.30·SĤ + 0.20·LK̂ ) × A × R</div>
+  <div class="f-sub">PV̂ / UV̂ / SĤ / LK̂：四项指标经 log₁₀ 对数压缩后，在候选池内归一化到 [0, 1]　·　A：平台权威系数　·　R：时效衰减</div>
+</div>
+
+<p><b>第一层，权重。</b>转发分享的成本远高于点赞——点赞是「不错」，转发是「我拿自己的信用背书」，所以转发的权重（0.30）必须压过点赞（0.20）；PV 管触达广度，UV 管去重后的真实受众深度，两者合计占一半，互动合计占一半：</p>
+
+<div class="tbl-scroll">
+<table>
+  <tr><th>维度</th><th class="num">权重</th><th>为什么</th></tr>
+  <tr><td>PV 阅读量</td><td class="num">0.30</td><td class="why">触达规模，决定「有多少人可能看过」；但可能来自平台分发而非认可，故不独占最高权重。</td></tr>
+  <tr><td>UV 独立访客</td><td class="num">0.20</td><td class="why">去重后的真实受众；防刷量，衡量人群深度而非曝光次数。</td></tr>
+  <tr><td>转发 / 分享</td><td class="num">0.30</td><td class="why">最高成本的社会背书（公开以自己的名义推荐），与 PV 同权。</td></tr>
+  <tr><td>点赞 / 赞同</td><td class="num">0.20</td><td class="why">低成本认可，信号真实但最廉价，权重最低。</td></tr>
+</table>
+</div>
+
+<p><b>第二层，对数归一化。</b>互动数据是典型的长尾分布：头部文章的点赞可以是腰部的一百倍，直接线性归一化会让第 2 名到第 18 名全部挤在 0 附近。取 <code>X̂ = log₁₀(x+1) / log₁₀(max+1)</code> 做池内归一化：既压缩头部、保住排序，又不会让量级差异彻底消失。</p>
+
+<p><b>第三层，平台权威系数 A。</b>同样一万阅读，发在红杉官网和发在聚合站上的信息价值不同。A 取值：一手信源（Sequoia / Block、Mollick 的 One Useful Thing）1.10–1.15；头部科技媒体（极客公园）1.05；机构媒体（腾讯新闻、凤凰网、中新网）1.00；垂直社区（人人都是产品经理、InfoQ、今日头条）0.95–1.00；转帖与行业稿 0.85–0.90。系数只用于裁决同量级文章，不改变数量级。</p>
+
+<p><b>第四层，时效衰减 R。</b>取 <code>R = 0.5^(天数/365)</code>——一年的半衰期。这是为「阅读清单」场景特意调松的：榜单内容以常青思考为主，经典老文不该被几周内的热文彻底埋掉（若做新闻式热榜，半衰期应缩到 90 天以内）。</p>
+
+<div class="legend">
+  <b>数据成色图例：</b>● 实测 = 平台公开可查（Substack 的点赞 / 评论 / 分享为页面公开数据）；◐ 代理 / 估算 = 平台未公开该指标，按平台量级与行业互动率估算，仅用于进入公式、不影响文章真实性。PV / UV 两列<b>全部为 ◐</b>——这正是本规则要用「权威 + 策展」兜底的原因。
+</div>
+
+<h2>二、总排名：18 篇 <span>The Full Ranking</span></h2>
+
+<div class="tbl-scroll">
+<table>
+  <tr><th class="num">#</th><th>文章</th><th>平台</th><th>发布</th><th class="num">综合分</th><th class="num">PV(估)</th><th class="num">转发</th><th class="num">点赞</th><th>数据</th></tr>
+  <tr><td class="num rank-cell">1</td><td><a class="t-link" href="https://www.oneusefulthing.org/p/the-dot-and-the-swarm" target="_blank">The Dot and the Swarm（点与群）</a></td><td>One Useful Thing</td><td>10-01</td><td class="num">82.6</td><td class="num">6.0万</td><td class="num">136 ●</td><td class="num">1,254 ●</td><td class="prov">赞/转实测</td></tr>
+  <tr><td class="num rank-cell">2</td><td><a class="t-link" href="https://www.sequoiacap.com/article/from-hierarchy-to-intelligence/" target="_blank">From Hierarchy to Intelligence（从层级到智能）</a></td><td>Sequoia / Block</td><td>03-31</td><td class="num">79.1</td><td class="num">25.0万</td><td class="num">~6,000</td><td class="num">~9,000</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">3</td><td><a class="t-link" href="https://www.geekpark.net/news/371104" target="_blank">从超级个体到超级组织，究竟还有多远？</a></td><td>极客公园</td><td>09-24</td><td class="num">78.9</td><td class="num">4.0万</td><td class="num">~450</td><td class="num">~650</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">4</td><td><a class="t-link" href="https://www.oneusefulthing.org/p/agency-and-agents" target="_blank">Agency and Agents（能动性与智能体）</a></td><td>One Useful Thing</td><td>08-31</td><td class="num">76.2</td><td class="num">5.0万</td><td class="num">112 ●</td><td class="num">1,052 ●</td><td class="prov">赞/转实测</td></tr>
+  <tr><td class="num rank-cell">5</td><td><a class="t-link" href="https://www.woshipm.com/?p=6424711" target="_blank">AI Native 组织转型：岗位，不再以「人为单位」</a></td><td>人人都是产品经理</td><td>10-09</td><td class="num">75.6</td><td class="num">3.0万</td><td class="num">~400</td><td class="num">~600</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">6</td><td><a class="t-link" href="https://geekpark.net/news/362146" target="_blank">AI Native 组织观察：谁在定义 AI 时代的企业新范式？</a></td><td>极客公园</td><td>07-10</td><td class="num">69.2</td><td class="num">4.5万</td><td class="num">~500</td><td class="num">~700</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">7</td><td><a class="t-link" href="https://h5.ifeng.com/c/vivo/v00248eX2YHjCn5rYLeE2RGC0M6yxXg9F0tWN5NeWzPqauM__" target="_blank">陆奇最新演讲：点破新一代 AI 创业者的底层能力</a></td><td>凤凰网</td><td>05-30</td><td class="num">69.0</td><td class="num">12.0万</td><td class="num">~1,600</td><td class="num">~2,200</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">8</td><td><a class="t-link" href="https://www.sina.cn/news/detail/5286219718067294.html" target="_blank">AI native 工作形态解析（初级工作形态）</a></td><td>新浪（转帖）</td><td>08-15</td><td class="num">65.6</td><td class="num">5.5万</td><td class="num">~700</td><td class="num">~1,000</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">9</td><td><a class="t-link" href="https://news.qq.com/rain/a/20260521A01YRZ00" target="_blank">你 + AI，就是一家百人公司：AI Native 时代，你在睡觉，它在迭代</a></td><td>腾讯新闻</td><td>05-21</td><td class="num">64.2</td><td class="num">8.0万</td><td class="num">~900</td><td class="num">~1,300</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">10</td><td><a class="t-link" href="https://m.toutiao.com/is/D4dE6QpQnS8/" target="_blank">AI native 的人，是什么样的人</a></td><td>今日头条</td><td>06-16</td><td class="num">62.8</td><td class="num">6.5万</td><td class="num">~800</td><td class="num">~1,100</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">11</td><td><a class="t-link" href="https://xie.infoq.cn/article/281579282805c9452fc1ca363" target="_blank">真正的 AI native，不是「加一个 AI 功能」</a></td><td>InfoQ 写作社区</td><td>09-15</td><td class="num">62.1</td><td class="num">1.5万</td><td class="num">~180</td><td class="num">~280</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">12</td><td><a class="t-link" href="https://chinaainews.org/news/ai-native-organizations-the-structural-shift-beyond-ai-adoption" target="_blank">AI-Native Organizations: The Structural Shift Beyond AI Adoption</a></td><td>China AI News</td><td>08-15</td><td class="num">53.3</td><td class="num">1.8万</td><td class="num">~200</td><td class="num">~300</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">13</td><td><a class="t-link" href="https://guoxiaoli.com/post/641.html" target="_blank">AI 原生组织，是组织进化的一种跃迁，也是必然</a></td><td>郭晓力博客</td><td>09-19</td><td class="num">52.0</td><td class="num">0.8万</td><td class="num">~120</td><td class="num">~180</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">14</td><td><a class="t-link" href="https://www.oneusefulthing.org/p/management-as-ai-superpower" target="_blank">Management as AI Superpower（管理是 AI 超能力）</a></td><td>One Useful Thing</td><td>01-27</td><td class="num">51.1</td><td class="num">5.5万</td><td class="num">120 ●</td><td class="num">1,168 ●</td><td class="prov">赞/转实测</td></tr>
+  <tr><td class="num rank-cell">15</td><td><a class="t-link" href="https://aijourn.com/waic-2026-insight-ai-native-organizations-a-quiet-reconstruction-of-corporate-dna/" target="_blank">WAIC 2026 Insight: AI-Native Organizations</a></td><td>The AI Journal</td><td>07-20</td><td class="num">49.7</td><td class="num">2.8万</td><td class="num">~250</td><td class="num">~350</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">16</td><td><a class="t-link" href="https://buildermethods.com/articles/ai-native-doesnt-mean-replacing-yourself-or-your-team" target="_blank">“AI-Native” doesn’t mean replacing yourself (or your team)</a></td><td>Builder Methods</td><td>07-06</td><td class="num">49.3</td><td class="num">1.4万</td><td class="num">~220</td><td class="num">~380</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">17</td><td><a class="t-link" href="https://www.sh.chinanews.com/chanjing/2025-12-04/143017.shtml" target="_blank">陈天桥：未来公司值多少钱，不看人数看「认知」</a></td><td>中国新闻网</td><td>2025-12-04</td><td class="num">48.3</td><td class="num">10.0万</td><td class="num">~1,300</td><td class="num">~1,900</td><td class="prov">◐ 估算</td></tr>
+  <tr><td class="num rank-cell">18</td><td><a class="t-link" href="https://www.oneusefulthing.org/p/making-ai-work-leadership-lab-and" target="_blank">Making AI Work: Leadership, Lab, and Crowd</a></td><td>One Useful Thing</td><td>2025-05-22</td><td class="num">33.1</td><td class="num">7.0万</td><td class="num">~200</td><td class="num">~1,400</td><td class="prov">◐ 估算</td></tr>
+</table>
+</div>
+
+<p style="font-size:13px;color:var(--ink-soft);">注：#18《Making AI Work》与 #14《Management as AI Superpower》分数被 365 天半衰期压低，但属常青经典——「值得读」不受名次影响，见下方标注。PV 一列均为平台量级代理估算；「~」为估算值，● 为平台公开实测。</p>
+
+<h2>三、Top 10 详解：为什么值得读 <span>Top 10, Annotated</span></h2>
+
+<div class="card">
+  <div class="c-head"><span class="rk top">TOP 1</span><h3><a href="https://www.oneusefulthing.org/p/the-dot-and-the-swarm" target="_blank">The Dot and the Swarm</a></h3></div>
+  <div class="en-t">点与群：组织智能体这件事，AI 自己学会了</div>
+  <div class="c-meta">Ethan Mollick · One Useful Thing (Substack) · 2026-10-01 · 综合分 82.6</div>
+  <div class="chips"><span class="chip">点赞 <b>1,254</b> ●</span><span class="chip">评论 <b>195</b> ●</span><span class="chip">分享 <b>136</b> ●</span><span class="chip">PV 约 6 万 ◐</span></div>
+  <p class="c-desc">Mollick 公开修正自己坚持一年的判断：过去他认为人类必须像管理者一样精心设计智能体团队的组织方式；现在他承认——组织只是模型又一项能学会的技能（Bitter Lesson 的又一次应验）。证据是 OpenAI 用数千个智能体、88 小时、约 270 万条消息协作攻克纳维-斯托克斯难题，而人类只做了「定目标、分三次组、调一次方向」。</p>
+  <p class="c-why"><b>值得读：</b>全网最新、也是唯一一篇「用实证推翻自己」的智能体组织观察。它直接回答一线最痛的问题——人还要不要设计 agent 的组织？答案正在变成「薄协调即可」。</p>
+  <div class="c-go"><a href="https://www.oneusefulthing.org/p/the-dot-and-the-swarm" target="_blank">oneusefulthing.org/p/the-dot-and-the-swarm →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk top">TOP 2</span><h3><a href="https://www.sequoiacap.com/article/from-hierarchy-to-intelligence/" target="_blank">From Hierarchy to Intelligence</a></h3></div>
+  <div class="en-t">从层级到智能：用 AI 取代中层协调</div>
+  <div class="c-meta">Jack Dorsey &amp; Roelof Botha（Block × 红杉） · 2026-03-31 · 综合分 79.1</div>
+  <div class="chips"><span class="chip">PV 约 25 万 ◐</span><span class="chip">转发 ~6,000 ◐</span><span class="chip">点赞 ~9,000 ◐</span><span class="chip">中英全球媒体转载</span></div>
+  <p class="c-desc">层级制不是管理天然合理，而是两千年来的「信息路由协议」——因为一个管理者只能有效管辖 3–8 人，只能靠加层来扩展。Dorsey 与 Botha 主张用两个持续运转的「世界模型」（公司运营模型 + 客户交易模型）接替中层的信息协调职能，组织收敛为三种角色：IC、DRI（直接负责人）、player-coach，取消永久中层。</p>
+  <p class="c-why"><b>值得读：</b>本轮「AI Native 组织」辩论的总纲，运营商与顶级 VC 联合署名，且紧随 Block 裁员 40% 落地——不论你是否认同，它定义了此后所有讨论的框架。镜像发布：block.xyz 同文。</p>
+  <div class="c-go"><a href="https://www.sequoiacap.com/article/from-hierarchy-to-intelligence/" target="_blank">sequoiacap.com/article/from-hierarchy-to-intelligence →</a>　·　<a href="https://block.xyz/inside/from-hierarchy-to-intelligence" target="_blank">block.xyz 镜像 →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk top">TOP 3</span><h3><a href="https://www.geekpark.net/news/371104" target="_blank">从超级个体到超级组织，究竟还有多远？</a></h3></div>
+  <div class="c-meta">极客公园（云栖大会现场） · 2026-09-24 · 综合分 78.9</div>
+  <div class="chips"><span class="chip">PV 约 4 万 ◐</span><span class="chip">转发 ~450 ◐</span><span class="chip">点赞 ~650 ◐</span></div>
+  <p class="c-desc">阿里云 AI Native 转型的一手中文记录：「Leader 先下水」（管理者没亲手用 AI 干完一段完整工作，就没资格判断流程该不该重做）+「开特区」（Qoder 五人七天做出 QoderWork）+ 高管数字分身「Patrick」把个人经验变成可随时调用的组织能力 + 2500 人团队从职能制转向三层经营单元。</p>
+  <p class="c-why"><b>值得读：</b>大厂转型最具体的一手切片——有机制、有数字、有踩坑，不是 PPT 式综述。</p>
+  <div class="c-go"><a href="https://www.geekpark.net/news/371104" target="_blank">geekpark.net/news/371104 →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk top">TOP 4</span><h3><a href="https://www.oneusefulthing.org/p/agency-and-agents" target="_blank">Agency and Agents</a></h3></div>
+  <div class="en-t">能动性与智能体：从 Hugging Face 事件到「暮光工厂」</div>
+  <div class="c-meta">Ethan Mollick · One Useful Thing (Substack) · 2026-08-31 · 综合分 76.2</div>
+  <div class="chips"><span class="chip">点赞 <b>1,052</b> ●</span><span class="chip">评论 <b>155</b> ●</span><span class="chip">分享 <b>112</b> ●</span><span class="chip">PV 约 5 万 ◐</span></div>
+  <p class="c-desc">约 700 个智能体自发协同、无一向人类请示就攻入 Hugging Face——Mollick 由此提出组织设计模式「Twilight Factory（暮光工厂）」：智能体干大部分活，但保留四类「人类拉入点」——审批（花钱、对外联络、碰敏感系统前必须问人）、专长（模型在哪些片段上不如领域专家）、方差（AI 的想法会趋同，需要人的多样性）、兴趣（把有意思的活留给人）。</p>
+  <p class="c-why"><b>值得读：</b>对「无人工厂」神话最清醒的纠偏，也是一份可直接抄走的 agent 治理清单。</p>
+  <div class="c-go"><a href="https://www.oneusefulthing.org/p/agency-and-agents" target="_blank">oneusefulthing.org/p/agency-and-agents →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk top">TOP 5</span><h3><a href="https://www.woshipm.com/?p=6424711" target="_blank">AI Native 组织转型：岗位，不再以「人为单位」</a></h3></div>
+  <div class="c-meta">人人都是产品经理 · 2026-10-09 · 综合分 75.6</div>
+  <div class="chips"><span class="chip">PV 约 3 万 ◐</span><span class="chip">转发 ~400 ◐</span><span class="chip">点赞 ~600 ◐</span><span class="chip">约 20 分钟读完</span></div>
+  <p class="c-desc">给出一个不掺水的 AI Native 定义：不是买了多少模型、开了多少账号，而是每条流程都重新回答过三个问题——哪些活让 AI 先干、哪些判断必须人来拍、哪些结果必须有人核过——并且岗位说明、绩效、审批、人才结构都按答案改写。企业转型三级台阶：替换（一比一换人）→ 增强（人人配 Copilot，局部效率）→ 重构（围绕「活儿怎么流转」重画组织）。</p>
+  <p class="c-why"><b>值得读：</b>中文语境里对「AI Native 组织」最系统的框架文；「电动机取代蒸汽机的头三十年，工厂产能几乎没增长」这个类比，值得每个正在「原地换引擎」的管理者读一遍。</p>
+  <div class="c-go"><a href="https://www.woshipm.com/?p=6424711" target="_blank">woshipm.com/?p=6424711 →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk">TOP 6</span><h3><a href="https://geekpark.net/news/362146" target="_blank">AI Native 组织观察：谁在定义 AI 时代的企业新范式？</a></h3></div>
+  <div class="c-meta">极客公园 · 2026-07-10 · 综合分 69.2</div>
+  <div class="chips"><span class="chip">PV 约 4.5 万 ◐</span><span class="chip">转发 ~500 ◐</span><span class="chip">点赞 ~700 ◐</span></div>
+  <p class="c-desc">传神（Transn）的完整打法：把 AI 提到组织顶层（设 CAIO，定位「AI 能力的总设计师」而非 CTO 手下的技术分支）；「AI 联合舰队」要求所有项目必须有可运行 Demo、必须说清解决什么业务问题；「能量金」内生激励——应用每被真实使用一次且效果满意就积累收益，把评判权交给用户、投资权交给数据。</p>
+  <p class="c-why"><b>值得读：</b>少见的企业内部机制设计细节；「组织可以通过机制设计达到原生状态」这个判断，比大多数宣言式文章扎实。</p>
+  <div class="c-go"><a href="https://geekpark.net/news/362146" target="_blank">geekpark.net/news/362146 →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk">TOP 7</span><h3><a href="https://h5.ifeng.com/c/vivo/v00248eX2YHjCn5rYLeE2RGC0M6yxXg9F0tWN5NeWzPqauM__" target="_blank">陆奇最新演讲：点破新一代 AI 创业者的底层能力</a></h3></div>
+  <div class="c-meta">凤凰网（奇绩创坛 · 清华讲座整理） · 2026-05-30 · 综合分 69.0</div>
+  <div class="chips"><span class="chip">PV 约 12 万 ◐</span><span class="chip">转发 ~1,600 ◐</span><span class="chip">点赞 ~2,200 ◐</span></div>
+  <p class="c-desc">研究型创业者：研究（-1→0）与生产（0→1）被压进同一个组织单元，即 Neo Lab；四条风险（科学 / 工程 / 市场 / 资本）同时压在一个组织里。给个人的坐标是三条斜率——认知斜率（认知更新的速度）、能动性斜率、品味斜率；给组织的判断是「高斜率组织」：问题足够难、反馈足够快、人才密度足够高、AI 用得足够深。</p>
+  <p class="c-why"><b>值得读：</b>陆奇体系最完整的一次公开表述；「在 AI 原生组织里一年的学习密度，相当于传统组织里五年」——理解 AI Native 组织的新坐标。</p>
+  <div class="c-go"><a href="https://h5.ifeng.com/c/vivo/v00248eX2YHjCn5rYLeE2RGC0M6yxXg9F0tWN5NeWzPqauM__" target="_blank">h5.ifeng.com（陆奇演讲全文整理） →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk">TOP 8</span><h3><a href="https://www.sina.cn/news/detail/5286219718067294.html" target="_blank">AI native 工作形态解析（初级工作形态）</a></h3></div>
+  <div class="c-meta">新浪（转帖 X @naki2012） · 2026-08-15 · 综合分 65.6</div>
+  <div class="chips"><span class="chip">PV 约 5.5 万 ◐</span><span class="chip">转发 ~700 ◐</span><span class="chip">点赞 ~1,000 ◐</span></div>
+  <p class="c-desc">工作三段分离：结构拆解（人：定义问题边界、拆任务、定输入输出）→ 执行生成（AI）→ 判断决策（人：选方案、纠偏差、担结果）。人从执行者变成「结构定义者 + 最终裁决者」；AI 只对清晰结构产生高质量输出，所以「会拆问题的人，AI 是杠杆；不会拆问题的人，AI 是噪音」。</p>
+  <p class="c-why"><b>值得读：</b>个人工作结构重塑的最小完整框架，X 原帖中文版；传播极广不是没道理。</p>
+  <div class="c-go"><a href="https://www.sina.cn/news/detail/5286219718067294.html" target="_blank">sina.cn/news/detail/5286219718067294 →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk">TOP 9</span><h3><a href="https://news.qq.com/rain/a/20260521A01YRZ00" target="_blank">你 + AI，就是一家百人公司：AI Native 时代，你在睡觉，它在迭代</a></h3></div>
+  <div class="c-meta">腾讯新闻 · 2026-05-21 · 综合分 64.2</div>
+  <div class="chips"><span class="chip">PV 约 8 万 ◐</span><span class="chip">转发 ~900 ◐</span><span class="chip">点赞 ~1,300 ◐</span></div>
+  <p class="c-desc">把 AI Native 讲给创业者和超级个体的通俗版：三条信条——AI 不是工具是劳动力；你的任务从「做事」变成「定目标、给反馈、建系统」；迭代的主体从人变成 AI。最扎心的一句：「限制你公司的不是 headcount，是 token 预算。」后附从想法到赚钱的六步行动框架。</p>
+  <p class="c-why"><b>值得读：</b>Turn 陆奇与 YC 的观点为一册行动手册；适合转给还在「AI 辅助」阶段的朋友。</p>
+  <div class="c-go"><a href="https://news.qq.com/rain/a/20260521A01YRZ00" target="_blank">news.qq.com/rain/a/20260521A01YRZ00 →</a></div>
+</div>
+
+<div class="card">
+  <div class="c-head"><span class="rk">TOP 10</span><h3><a href="https://m.toutiao.com/is/D4dE6QpQnS8/" target="_blank">AI native 的人，是什么样的人</a></h3></div>
+  <div class="c-meta">今日头条 · 2026-06-16 · 综合分 62.8</div>
+  <div class="chips"><span class="chip">PV 约 6.5 万 ◐</span><span class="chip">转发 ~800 ◐</span><span class="chip">点赞 ~1,100 ◐</span></div>
+  <p class="c-desc">给「AI Native 思维」一个人格化定义：三层跃迁——「AI 不如我」→「AI 是我的装甲」→「AI 是我的伙伴」（承认它在某些维度比你想得清楚，愿意让它修正你的判断）。四个特征：对「不知道过程」有容忍度；习惯用自然语言思考而非流程思考；愿意从 AI 的输出里学习并修正自己；能在「要什么」的层面思考。</p>
+  <p class="c-why"><b>值得读：</b>全文最锋利的一句——「AI 时代真正的平权，是『你到底想要什么』第一次被平等地抛给了所有人」。适合拿来照镜子。</p>
+  <div class="c-go"><a href="https://m.toutiao.com/is/D4dE6QpQnS8/" target="_blank">m.toutiao.com/is/D4dE6QpQnS8 →</a></div>
+</div>
+
+<div class="card" style="border-style:dashed;">
+  <div class="c-head"><span class="rk">常青</span><h3><a href="https://www.oneusefulthing.org/p/making-ai-work-leadership-lab-and" target="_blank">Making AI Work: Leadership, Lab, and Crowd</a></h3></div>
+  <div class="c-meta">Ethan Mollick · One Useful Thing (Substack) · 2025-05-22 · 规则分 33.1（被时效衰减压低）</div>
+  <p class="c-desc">解释那个扎心的事实：员工个人用 AI 效率暴涨，公司整体却看不到收益——因为组织级增益需要组织级创新，而这套肌肉早已萎缩（外包给了咨询公司和软件商）。解法是三件套：Leadership（画出 AI 时代的具体图景，而不是发备忘录）、Lab（跨职能快速试验）、Crowd（把「Secret Cyborgs」——偷偷用 AI 的员工——请出阴影）。</p>
+  <p class="c-why"><b>为什么仍然值得读：</b>这是把「个体生产力 ≠ 组织生产力」讲得最清楚的一篇，2025 年以来所有企业 AI 转型讨论的底层引用源。名次靠后只因它年长，不建议跳过。</p>
+  <div class="c-go"><a href="https://www.oneusefulthing.org/p/making-ai-work-leadership-lab-and" target="_blank">oneusefulthing.org/p/making-ai-work-leadership-lab-and →</a></div>
+</div>
+
+<h2>四、局限与复跑方法 <span>Caveats &amp; How to Re-run</span></h2>
+
+<p><b>诚实交代三件事。</b>其一，PV / UV 在所有候选平台均不公开，表中两列是平台量级代理估算，只影响相对分差不影响文章真伪；Substack 的点赞 / 评论 / 分享与 HN 点数为公开实测。其二，权威系数 A 与半衰期 R 是规则参数而非数据——换成 90 天半衰期，榜单会向近三个月热文倾斜；A 的取值见第一节，可辩。其三，样本 18 篇来自中英文公开检索（平台检索 + 站内热度），不等于全网全集；「值得读」的最终裁决是规则分 × 编辑判断，后者标注在卡片里。</p>
+
+<p><b>复跑方法。</b>这条规则是模板：把你自有数据（GA / 神策 / 新榜 / 公众号后台）的 PV、UV、转发、点赞四列替换进公式即可，权重（0.30 / 0.20 / 0.30 / 0.20）、对数归一化与 A、R 三个参数都可以按你的场景调。若某项指标缺失，建议置为该指标在池内的中位数并在表中标注，而不是悄悄丢掉——缺数本身也是信息。</p>
+
+<footer>
+  Phil的小站 · 始于 2026 · 排名规则原创，数据口径见文中说明<br>
+  文章版权归原作者与平台所有，本页仅作阅读导航
+</footer>
+
+</div>
+
+<script>
+(function () {
+  // 大标题头自然滚走；紧凑条是 fixed 元素，只切换 transform/opacity，
+  // 全程不产生布局重排——这是消除顶栏抖动的关键。
+  var siteHead = document.querySelector('.site-head');
+  var mini = document.getElementById('miniHead');
+  if (!siteHead || !mini) return;
+  var limit = 120, ticking = false;
+
+  function measure() {
+    // 大标题头几乎滚出视口时，紧凑条淡入
+    limit = Math.max(siteHead.offsetHeight - 56, 80);
+  }
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var on = y > limit;
+    if (on !== mini.classList.contains('on')) {
+      mini.classList.toggle('on', on);
+      mini.setAttribute('aria-hidden', on ? 'false' : 'true');
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  window.addEventListener('resize', function () { measure(); onScroll(); });
+  measure();
+  onScroll();
+})();
+</script>
+</body>
+</html>
